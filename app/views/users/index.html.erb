@@ -1,0 +1,81 @@
+<h1>Welcome!</h1>
+
+<!-- Registration section -->
+
+<div class="row">
+  <div class="container">
+    <div class="col-sm-6">
+      <form action="/users" method="post">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+        <h1>Register</h1>
+
+        <div class="form group">
+          <span class="name">Name:</span>
+          <input class="form-control" type="text" id="Name" name="user[name]">
+        </div>
+
+        <div class="form group">
+          <span class="alias">Alias:</span>
+          <input class="form-control" type="text" id="Alias" name="user[alias]">
+        </div>
+
+        <div class="form group">
+          <span class="email">Email:</span>
+          <input class="form-control" type="text" id="Email" name="user[email]">
+        </div>
+
+        <div class="form group">
+          <span class="password">Password:</span>
+          <input class="form-control" type="password" name="user[password]" id="Password">
+        </div>
+
+        <div class="form group">
+          <span class="password_confirmation">Password Comfirmation:</span>
+          <input class="form-control" type="password" name="user[password_confirmation]" id="Password_Confirmation">
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Join">
+      </form>
+    </div>
+  </div>
+
+  <!-- Login section -->
+        <div class="container">
+          <div class='col-sm-6'>
+              <form action="/sessions" method="post">
+                <div class="form group">
+                  <input class="form-control" name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+                        <h1>Log In</h1>
+                  <span class="email">Email:</span>
+                  <input class="form-control" type="text" id="Email" name="email">
+
+
+                <div class="form group">
+                  <span class="password">Password:</span>
+                  <input class="form-control" type="password" name="password" id="Password">
+                </div>
+
+                <input type="submit" class="btn btn-primary" value="Log In">
+              </form>
+
+            <!-- error messages -->
+            <div class="container">
+              <% if flash[:errors] %>
+              <% flash[:errors].each do |error| %>
+              <div class="row">
+                <div class="alert alert-danger">
+                  ***<%= error %>***
+                </div>
+              </div>
+              <% end %>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
