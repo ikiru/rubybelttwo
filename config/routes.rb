@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
   ########  Dashboard  ############
 
-  get 'dashboard'  => 'dashboard#show'
+  get 'dashboard'  => 'dashboards#index'
 
 end

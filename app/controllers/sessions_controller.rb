@@ -8,7 +8,7 @@ def create
     user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
     if user
         session[:user_id] = user.id
-        return redirect_to "/ideas"
+        return redirect_to "/dashboard"
     else
         flash[:errors] = ['To To Bad, So Sad. This Combo will not work']
         return redirect_to :back
