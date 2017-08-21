@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:create, :index]
-  
+
   def index
   end
 
   def create
-    user = User.create(user_params)
+    user = User.new(user_params)
     if user.valid?
+      user.save
       session[:user_id] = user.id
+      flash[:notice] = ["Registered Successfully"]
       return redirect_to '/'
     else
       flash[:errors] = user.errors.full_messages
@@ -26,6 +28,6 @@ class UsersController < ApplicationController
     end
 
     def auth
-      return redirect_to '/ideas' unless session[:user_id].to_s == params[:id]
+      return redirect_to '/' unless session[:user_id].to_s == params[:id]
     end
 end

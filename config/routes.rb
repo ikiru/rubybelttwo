@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   get 'dashboard'  => 'dashboards#index'
 
 
-########  login and out ############
-
-
-
+########  login and out ###########
+delete 'logout' => 'sessions#destroy'
 end
