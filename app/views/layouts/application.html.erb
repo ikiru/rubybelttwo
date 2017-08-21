@@ -12,7 +12,29 @@
 </head>
 <body>
 
+  <!-- error messages -->
+  <div class="container">
+    <% if flash[:notice] %>
+    <% flash[:notice].each do |error| %>
+    <div class="row">
+      <div class="alert alert-success">
+        ***<%= error %>***
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+
 <%= yield %>
+
+<% if flash[:errors] %>
+<% flash[:errors].each do |error| %>
+<div class="row">
+  <div class="alert alert-danger">
+    ***<%= error %>***
+  </div>
+</div>
+<% end %>
+<% end %>
 
 </body>
 </html>

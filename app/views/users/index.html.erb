@@ -53,23 +53,11 @@
 
                 <div class="form group">
                   <span class="password">Password:</span>
-                  <input class="form-control" type="password" name="password" id="Password">
+                  <input class="form-control" type="text" name="password" id="Password">
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="Log In">
               </form>
-
-            <!-- error messages -->
-            <div class="container">
-              <% if flash[:errors] %>
-              <% flash[:errors].each do |error| %>
-              <div class="row">
-                <div class="alert alert-danger">
-                  ***<%= error %>***
-                </div>
-              </div>
-              <% end %>
-              <% end %>
 
             </div>
           </div>
