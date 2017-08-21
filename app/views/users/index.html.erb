@@ -1,10 +1,9 @@
-<h1>Welcome!</h1>
-
-<!-- Registration section -->
-
 <div class="row">
   <div class="container">
-    <div class="col-sm-6">
+    <h1>Welcome!</h1>
+
+    <!-- Registration section -->
+    <div class="col-sm-5">
       <form action="/users" method="post">
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
@@ -42,7 +41,7 @@
 
   <!-- Login section -->
         <div class="container">
-          <div class='col-sm-6'>
+          <div class='col-sm-5'>
               <form action="/sessions" method="post">
                 <div class="form group">
                   <input class="form-control" name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -77,5 +76,3 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
