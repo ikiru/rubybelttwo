@@ -9,6 +9,4 @@ class DashboardsController < ApplicationController
 
   end
 
-
-
 end
