@@ -10,7 +10,7 @@ def create
         session[:user_id] = user.id
         return redirect_to "/dashboard"
     else
-        flash[:errors] = ['To To Bad, So Sad. This Combo will not work']
+        flash[:errors] = ['Too Too Bad, So Sad. This Combo will not work']
         return redirect_to :back
     end
 end
