@@ -3,8 +3,8 @@ class CreateShoes < ActiveRecord::Migration
     create_table :shoes do |t|
       t.string :product
       t.float :price
-      t.references :buyer, index: true, foreign_key: true
-      t.references :seller, index: true, foreign_key: true
+      t.references :buyer, index: true
+      t.references :seller, index: true 
 
       t.timestamps null: false
     end

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'products/index'
-
-  get 'products/create'
+  get 'products' => 'products#index'
+  post 'products' => 'products#create'
+  put 'products/:id' => 'products#purchased'
+  delete 'products/:id' => 'products#destroy'
 
   #########    Users    #############
 
@@ -20,6 +21,7 @@ delete 'sessions/:id' => 'sessions#destroy'
   ########  Dashboard  ############
 
 get 'dashboard'  => 'dashboards#index'
+post 'dashboard' => 'dashboards#create'
 
 
 ########  login ###########

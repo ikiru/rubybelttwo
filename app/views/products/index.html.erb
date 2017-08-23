@@ -8,7 +8,7 @@
 
 <div class="container">
   <h3>All products</h3>
-  <table>
+  <table class="table">
     <thead>
         <tr>
           <th>Product</th>
@@ -21,12 +21,12 @@
     <tbody>
       <% @shoes.each do |shoe| %>
       <tr>
-        <td><%= shoe.name %></td>
+        <td><%= shoe.product %></td>
         <td><%= shoe.seller.name.titleize %> <%= shoe.seller.alias.titleize %></td>
         <td><%= shoe.created_at.strftime("%B %d, %Y") %></td>
         <td>$<%= shoe.price %></td>
         <% unless current_user == shoe.seller %>
-        <td><a href="/shoes/<%= shoe.id %>" data-method='put'>Buy</a></td>
+        <td><a href="/products/<%= shoe.id %>" data-method='put'>Buy</a></td>
         <% end %>
       </tr>
       <% end %>

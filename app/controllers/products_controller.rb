@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
 
 def index
-  @shoes = Shoe.where(buyer: nil)
+  @shoes = Shoe.where.not(seller:  [current_user])
+
 end
 
 def create
@@ -22,6 +23,7 @@ def destroy
   shoe.destroy if current_user == shoe.seller
   redirect_to :back
 end
+
 def purchased
   Shoe.find(params[:id]).update(buyer: current_user)
   redirect_to :back
@@ -30,5 +32,6 @@ end
 
 private
   def shoe_params
-    params.require(:shoe).permit(:name, :price).merge(seller: current_user)
+    params.require(:shoe).permit(:product, :price).merge(seller: current_user)
   end
+end

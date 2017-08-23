@@ -1,16 +1,18 @@
 <h1 id="hi">Hi <%= current_user.name.titleize %>!</h1>
 <div style="float-right">
     <a href="/logout" data-method="delete">Logout</a>
-  <a href="/product">Go to all Products</a>
+  <a href="/products">Go to all Products</a>
 </div>
 
 <!-- Dashboard code on the page -->
 <div class="container">
 <h3>Sell products</h3>
   <div class="form-group">
+    <form class="" action="/dashboard" method="post">
+
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <span class="name">Name:</span>
-    <input class="form-control" type="text" id="name" name="shoe[seller]">
+    <span class="name">Product Name:</span>
+    <input class="form-control" type="text" id="product" name="shoe[product]">
   </div>
 
   <div class="form-group">
@@ -18,6 +20,7 @@
     <input class="form-control" type="text" id="amount" name="shoe[price]">
   </div>
 <input type="submit" class="btn btn-primary" value="Sell">
+</form>
 </div>
 
 
@@ -34,12 +37,12 @@
       </tr>
     </thead>
       <tbody>
-        <% @to_sell.each do |s| %>
+        <% @shoes.each do |shoe| %>
         <tr>
-          <td><%= s.name.titleize %></td>
-          <td><%= s.created_at.strftime("%B %d, %Y") %></td>
-          <td>$<%= s.price %></td>
-          <td><a href="/products/<%= s.id %>" data-method="delete">Remove</a></td>
+          <td><%= shoe.product.titleize %></td>
+          <td><%= shoe.created_at.strftime("%B %d, %Y") %></td>
+          <td>$<%= shoe.price %></td>
+          <td><a href="/products/<%= shoe.id %>" data-method="delete">Remove</a></td>
         </tr>
         <% end %>
       </tbody>
@@ -59,17 +62,17 @@
       </tr>
     </thead>
     <tbody>
-      <% @sold.each do |s| %>
+      <% @sold.each do |shoes| %>
       <tr>
-        <td><%= s.name.titleize %></td>
-        <td><%= s.updated_at.strftime("%B %d, %Y") %></td>
-        <td><%= s.buyer.first_name.titleize %><%= s.buyer.last_name.titleize %></td>
-        <td>$<%= s.price %></td>
+        <td><%= shoes.product.titleize %></td>
+        <td><%= shoes.updated_at.strftime("%B %d, %Y") %></td>
+        <td><%= shoes.buyer.name.titleize %><%= shoes.buyer.alias.titleize %></td>
+        <td>$<%= shoes.price %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
-  <p class="total">Total: <%= @total_sold %></p>
+  <p class="total">Total: $<%= @total_sold %></p>
 </div>
 
 
@@ -86,15 +89,15 @@
       </tr>
     </thead>
     <tbody>
-      <% @purchased.each do |s| %>
+      <% @purchase.each do |shoe| %>
       <tr>
-        <td><%= s.name.titleize %></td>
-        <td><%= s.updated_at.strftime("%B %d, %Y") %></td>
-        <td><%= s.buyer.first_name.titleize %><%= s.buyer.last_name.titleize %></td>
-        <td>$<%= s.price %></td>
+        <td><%= shoe.product.titleize %></td>
+        <td><%= shoe.updated_at.strftime("%B %d, %Y") %></td>
+        <td><%= shoe.buyer.name.titleize %> <%= shoe.buyer.alias.titleize %></td>
+        <td>$<%= shoe.price %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
-  <p class="total">Total: <%= @total_purchase%></p>
+  <p class="total">Total: $<%= @total_purchase%></p>
 </div>
